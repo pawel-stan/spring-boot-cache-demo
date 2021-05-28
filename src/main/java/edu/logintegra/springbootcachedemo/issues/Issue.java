@@ -1,13 +1,12 @@
 package edu.logintegra.springbootcachedemo.issues;
 
+import edu.logintegra.springbootcachedemo.comments.Comment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,4 +26,7 @@ public class Issue {
 
     @Column(columnDefinition = "TEXT")
     String content;
+
+    @OneToMany(mappedBy = "issue")
+    Set<Comment> comments;
 }

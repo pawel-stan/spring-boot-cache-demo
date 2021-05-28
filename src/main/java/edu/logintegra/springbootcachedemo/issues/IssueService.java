@@ -2,6 +2,7 @@ package edu.logintegra.springbootcachedemo.issues;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class IssueService {
 
         log.info("Zakończyliśmy obliczanie liczby komentarzy dla " + issue + " -- wyszło nam " + issue.id.intValue() + ".");
 
-        return issue.id.intValue();
+        return issue.comments.size();
+    }
+
+    @CacheEvict(value = "issue-maps-cache", key = "#issue.id")
+    public void clearCache(Issue issue) {
+        log.info("Czyścimy cache zgłoszenia " + issue + "...");
     }
 }

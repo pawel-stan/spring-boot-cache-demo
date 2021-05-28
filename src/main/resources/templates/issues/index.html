@@ -35,7 +35,11 @@
         </tr>
         </thead>
         <tr th:each="issueMap : ${issueMaps}">
-            <td th:text="${issueMap.code}"></td>
+            <td>
+                <a th:href="@{'/issues/' + ${issueMap.code} + '/edit'}">
+                    <span th:text="${issueMap.code}"></span>
+                </a>
+            </td>
             <td th:text="${issueMap.title}"></td>
             <td th:text="${issueMap.numberOfComments}"></td>
         </tr>

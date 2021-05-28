@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Setter
 public class IssueMap implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     String code;
     String title;
     String content;
